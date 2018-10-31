@@ -1,14 +1,12 @@
 # Define project name
-project(chapter2)
+project(chapter3)
 
 set(HEADER_FILES
-	common.h
-	linear_list.h
-	sequential_list.h
-	linked_list.h
-	circle_list.h
-	doubly_linked_list.h
-	static_list.h)
+	sequential_stack.h
+	dual_stack.h
+	linked_stack.h
+	circle_queue.h
+	linked_queue.h)
 
 set(SOURCE_FILES
 	main.cpp)
