@@ -6,7 +6,10 @@ set(HEADER_FILES
 	dual_stack.h
 	linked_stack.h
 	circle_queue.h
-	linked_queue.h)
+	linked_queue.h
+	priority_queue.h
+	double_circle_queue.h
+	double_linked_queue.h)
 
 set(SOURCE_FILES
 	main.cpp)

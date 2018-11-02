@@ -6,6 +6,8 @@
 #include "linked_stack.h"
 #include "circle_queue.h"
 #include "linked_queue.h"
+#include "double_ended_queue.h"
+#include "double_linked_queue.h"
 
 void test_stack()
 {
@@ -86,13 +88,52 @@ void test_linked_queue()
 	std::cout << queue << std::endl;
 }
 
+void test_sequential_double_queue()
+{
+	sequential_double_queue<int> queue;
+
+	queue.EnQueueTail(13);
+	queue.EnQueueTail(12);
+	queue.EnQueueTail(11);
+
+	std::cout << queue << std::endl;
+
+	queue.EnQueueHead(20);
+	queue.EnQueueHead(18);
+	queue.EnQueueHead(15);
+
+
+	std::cout << queue << std::endl;
+
+	int x = 0;
+	queue.DeQueueHead(x);
+
+	std::cout << queue << std::endl;
+
+	queue.DeQueueTail(x);
+
+	std::cout << queue << std::endl;
+
+}
+
+void test_linked_double_queue()
+{
+	linked_double_queue<int> queue;
+
+
+}
+
 int main(int argc, char *argv[])
 {
 	//test_stack();
 	//test_dual_stack();
 	//test_linked_stack();
 	//test_circle_queue();
-	test_linked_queue();
+	//test_linked_queue();
+	//test_sequential_double_queue();
+
+	test_linked_double_queue();
+
 
 	getchar();
 	exit(EXIT_SUCCESS);

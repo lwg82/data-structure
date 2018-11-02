@@ -24,7 +24,7 @@ public:
 	{
 		for (int i = s.front; i < s.rear; i = (i+1) % s.max_size)
 		{
-			os << "i=" << s.elems[i] << ' ';
+			os << i << "=" << s.elems[i] << ' ';
 		}
 
 		return os;

@@ -35,7 +35,6 @@ public:
 	bool dequeue(T &x);
 
 	bool empty() const { return front == nullptr; }
-	
 
 	int  size() const;
 	bool get_front(T& x);
