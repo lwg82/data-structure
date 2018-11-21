@@ -1,9 +1,9 @@
 # Define project name
-project(chapter5)
+project(chapter7)
 
 set(HEADER_FILES
-	binary_tree.h
-	minimum_heap.h)
+	binary_serach_tree.h
+)
 
 set(SOURCE_FILES
 	main.cpp)
