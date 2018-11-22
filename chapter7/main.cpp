@@ -4,6 +4,8 @@
 #include <iostream>
 
 #include "binary_serach_tree.h"
+#include "avl_tree.h"
+
 /*
 
 		
@@ -36,9 +38,15 @@ void test_binary_search_tree()
 	bst.inOrder();
 }
 
+void test_avl_tree()
+{
+	AVLTree<int, int> avl;
+}
+
 int main(int argc, char *argv[])
 {
-	test_binary_search_tree();
+	//test_binary_search_tree();
+	test_avl_tree();
 
 	getchar();
 

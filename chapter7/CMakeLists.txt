@@ -3,6 +3,7 @@ project(chapter7)
 
 set(HEADER_FILES
 	binary_serach_tree.h
+	avl_tree.h
 )
 
 set(SOURCE_FILES
