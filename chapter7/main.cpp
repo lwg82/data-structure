@@ -41,6 +41,26 @@ void test_binary_search_tree()
 void test_avl_tree()
 {
 	AVLTree<int, int> avl;
+
+	avl.insert(16, 16);
+	avl.insert(3, 3);
+	//std::cout << avl;
+	
+
+	avl.insert(7, 7);
+	//std::cout << avl;
+
+	avl.insert(11, 11);
+	avl.insert(9, 9);
+	avl.insert(26, 26);
+	avl.insert(18, 18);
+	avl.insert(14, 14);
+	avl.insert(15, 15);
+
+	std::cout << avl;
+
+
+	std::cout  << "比对次数:" << avl.get_counter() << " key= " << avl.search(14)->key; // 右结合
 }
 
 int main(int argc, char *argv[])
