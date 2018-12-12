@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "binary_tree.h"
+#include "minimum_heap.h"
 
 template<typename T>
 void visit(binary_tree_node<T>* node)
@@ -51,9 +52,38 @@ void test_binary_tree()
 	std::cout << ((tree1 != tree2) ? "t" : "f") << std::endl;
 }
 
+void test_minimum_heap()
+{
+	minimum_heap<int> heap;
+
+	heap.insert(10);
+	heap.insert(11);
+
+	
+
+
+	heap.insert(9);
+	std::cout << heap.getMin() << std::endl;
+
+	heap.insert(6);
+	std::cout << heap.getMin() << std::endl;
+
+	heap.insert(20);
+
+	heap.insert(5);
+	std::cout << heap.getMin() << std::endl;
+
+	int re = 0;
+	heap.remove(re);
+	std::cout << "remove data:" << re << std::endl;
+	std::cout << heap.getMin() << std::endl;
+	
+}
+
 int main(int argc, char *argv[])
 {
-	test_binary_tree();
+	// test_binary_tree();
+	test_minimum_heap();
 
 	getchar();
 

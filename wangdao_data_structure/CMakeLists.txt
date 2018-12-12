@@ -1,12 +1,12 @@
 # Define project name
-project(chapter5)
+project(wangdao_data_structure)
 
 set(HEADER_FILES
-	binary_tree.h
-	minimum_heap.h
-	tree.h)
+	chapter2.h
+)
 
 set(SOURCE_FILES
+	chapter2.cpp
 	main.cpp)
 
 # Declare the executable target built from your sources

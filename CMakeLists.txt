@@ -13,5 +13,8 @@ add_subdirectory(chapter4)
 add_subdirectory(chapter5)
 add_subdirectory(chapter7)
 
+
+add_subdirectory(wangdao_data_structure)
+
 # mkdir -p build 
 # cmake -E chdir build cmake -G "Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=debug ../
