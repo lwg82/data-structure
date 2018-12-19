@@ -27,7 +27,7 @@ private:
 */
 
 template<typename T> 
-sequential_list<T>::sequential_list(int default_size = 100)
+sequential_list<T>::sequential_list(int default_size)
 {
 	data = nullptr;
 	max_size = 0;

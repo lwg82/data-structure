@@ -4,6 +4,7 @@
 
 /*
 	单链表
+	不带头指针
 */
 template<typename T>
 struct linked_node

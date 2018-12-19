@@ -3,10 +3,12 @@ project(wangdao_data_structure)
 
 set(HEADER_FILES
 	chapter2.h
+	chapter22.h
 )
 
 set(SOURCE_FILES
 	chapter2.cpp
+	chapter22.cpp
 	main.cpp)
 
 # Declare the executable target built from your sources
