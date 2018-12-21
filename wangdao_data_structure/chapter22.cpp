@@ -706,3 +706,181 @@ void find_and_delete2(CircleLinkList L1)
 	delete L1;
 	
 }
+
+// 与标准答案不一样
+// 自己的想法是错的，如果只交换值后频率，则会改变结点前后的位置，导致单链表结构变化
+// 所以应该先将结点从链表中取下，然后再插入相应位置
+
+DLinkNode *Locate(DLinkList L, ElemType x)
+{ // 假设频率已经是递增的
+	DLinkNode *cur = L->next;
+
+	while (NULL != cur)
+	{
+		if (cur->data == x)
+		{
+			(cur->freq)++; // 频度+1
+			break;
+		}
+
+		cur = cur->next;
+	}
+
+	// 没找到
+	if (cur == NULL)
+		return NULL;
+
+
+	// 找到值为 x 的对象
+	DLinkNode *pos = cur; // 保存当前结点地址
+	
+	while (L != cur->prior) // 向前搜索, 前驱不是头结点
+	{
+		if (cur->freq >= cur->prior->freq)
+		{
+			cur = cur->prior; // 继续向前
+		}
+		else
+		{
+			//
+			break;
+		}
+	}
+
+	// 互换值和频率
+	pos->data = cur->data;
+	cur->data = x;
+
+	int freq = pos->freq;
+	pos->freq = cur->freq;
+	cur->freq = freq;
+
+	return cur;
+}
+
+int   find_data(LinkList L, int k, ElemType &data)
+{
+	/*
+		1 遍历单链表，计算单链表的长度 n
+		2 获得倒数k在单链表中的位置 n-k+1
+		3 遍历单链表 n-k+1位置上的值
+		xxxxxxxxxxxxxxxx 
+		自己的方式需要遍历2次，而答案只需遍历一次
+		设计两个指针，q,p, 初始时都指向头结点的下一个结点，即第一个数据结点
+		p先移动k个位置，当到达k个位置后，q与p同时向后移动，当p到达链表尾时，q所指结点就是第k个结点
+	*/
+
+	LinkNode *p = L->next;
+	LinkNode *q = L->next;
+	int pos = k;
+
+	while (NULL != p)
+	{
+		p = p->next;
+		
+		if (pos > 0)
+			pos--;
+		else
+		{
+			q = q->next;
+		}
+	}
+
+	if (pos > 0) // 注意这里
+	{
+		data = q->data;
+		return 1;
+	}
+		
+
+	return 0;
+}
+
+int GetLen(LinkList L)
+{
+	int count = 0;
+
+	LinkNode *cur = L->next;
+
+	while (cur != NULL)
+	{
+		count++;
+		cur = cur->next;
+	}
+	return count;
+}
+
+LinkNode *GetSamePointer(LinkList str1, LinkList str2)
+{
+	/*
+		分别遍历str1,str2,求得两个字符串的长度 len1, len2
+		求得 两个字符串长度的差 diff = len1-len2; diff>0
+		设置 p1=str1->next; p2=str2->next;分别指向单链表的第一个结点
+		长度值大的字符串优先移动 diff 位置；然后两个指针开始比对值是否相等，
+		如果相等，则找到位置，不相等p1,p2分别继续向后移动一个位置
+		时间复杂度 O(len1+len2)
+	*/
+	int len1 = GetLen(str1);
+	int len2 = GetLen(str2);
+
+	LinkNode *cur1 = str1->next;
+	LinkNode *cur2 = str2->next;
+
+	int diff = (len1 > len2) ? (len1 - len2) : (len2 - len1);
+	
+	for (; len1 > len2; len1--)
+		cur1 = cur2->next;
+
+	for (; len1 < len2; len2--)
+		cur2 = cur2->next;
+	
+	while (cur1 && cur2 && (cur1 != cur2))
+	{
+		cur1 = cur1->next;
+		cur2 = cur2->next;
+	}
+
+	return cur1;
+}
+
+
+void DeleteSameNode(LinkList L, int maxData)
+{
+	/*
+		根据题目要求时间复杂度尽可能的高效，则采用先排序，再删除相同值的方法至少需要遍历两次。
+		然后就应该考虑使用空间换时间的方式：
+			定义一个数组，因为 |data|<=n, 则数组大小为 n+1
+			当扫描的同时，则数组对于位置 a[n] 加1，当 a[n] 已经等于1时，说明该值出现第二次，应该删除
+			时间复杂度 O(n), 空间复杂度 O(m)
+	*/
+
+	// 定义数组
+	int *dataArray = new int[maxData+1];
+	for (int i = 0; i < maxData + 1; i++) // 注意，不能有等号
+		dataArray[i] = 0;
+
+	LinkNode *cur = L->next;
+	while (cur != NULL)
+	{
+		int pos = (cur->data) > 0 ? cur->data : -(cur->data);
+
+		if (dataArray[pos] > 0)
+		{// 删除结点
+			LinkNode *node = cur;
+
+			cur = cur->next;
+
+			delete node;
+
+		}
+		else
+		{
+			(dataArray[pos])++;
+
+			cur = cur->next;
+		}
+	}
+
+
+	delete[] dataArray;
+}

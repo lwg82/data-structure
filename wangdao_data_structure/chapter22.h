@@ -13,6 +13,7 @@ typedef struct DLNode
 	ElemType data;
 	struct DLNode *prior;
 	struct DLNode *next;
+	int    freq; // 访问频度
 }DLinkNode, *DLinkList;
 
 // 1
@@ -54,4 +55,20 @@ void slist(CircleLinkList L1, CircleLinkList L2);
 // 19
 void find_and_delete(CircleLinkList L1);
 void find_and_delete2(CircleLinkList L1);
+// 20
+DLinkNode *Locate(DLinkList L, ElemType x);
+// 21
+int   find_data(LinkList L, int k, ElemType &data);
+// 22
+int GetLen(LinkList L);
+LinkNode * GetSamePointer(LinkList L1, LinkList L2);
+// 23
+void DeleteSameNode(LinkList L, int maxData);
 
+/*
+	思路总结
+	1.当提到时间复杂度尽可能的少，这是可以去想用空间换时间
+	2.对一些题型，可以选择先排序，再解答的步骤
+
+
+*/
