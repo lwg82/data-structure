@@ -98,7 +98,7 @@ template<typename T>
 bool linked_queue<T>::dequeue(T &x)
 {
 	// 先进先出， 尾部插入，头部出
-	if (empty())
+	if (front == nullptr)
 		return false;
 
 	queue_node<T> *ptr = front;
